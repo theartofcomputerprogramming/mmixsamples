@@ -1,7 +1,7 @@
 // loadstore.mms
 // examples of load and store instructions
 
-// comment line can start with any non-alphannumeric character
+// comment line can start with any non-alphanumeric character
 // but don't use semicolon or poundsign to start a comment line
 // there is no multiline comment block
 // trailing part of line after statement is ignored
@@ -127,7 +127,7 @@ Main       LDB $4,$2,$3 // trailing comment: program starts at Main
 
 // instruction 15:
 // load Data_Segment address where data can be written: 0x2000 0000 0000 0000
-           LDOU $3,#0018
+           LDOU $3,$2,#18
 
 // instruction 16:
 // form new address from base and offset
