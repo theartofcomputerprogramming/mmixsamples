@@ -1,7 +1,7 @@
 // loadstore.mms
 // examples of load and store instructions
 
-// comment line can start with any non-alphannumeric character
+// comment line can start with any non-alphanumeric character
 // but don't use semicolon or poundsign to start a comment line
 // there is no multiline comment block
 // trailing part of line after statement is ignored
