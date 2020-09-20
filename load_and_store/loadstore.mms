@@ -45,9 +45,13 @@
 // now the code
 
 // $0 is argc
-// $1 is argv, 0x4000 0000 0000 0008, second octa of Pool_Segment
+// $1 is address of argv, 0x4000 0000 0000 0008, second octa of Pool_Segment
 // $255 first GREG is numeric code for Main (offset of Main)
-// $2, $3 like pretty much all other registers are zero at start
+// $2, $3 and all other registers are zero at start
+
+// this program can be run in the debugger without a commandline
+// $0=argc will be zero in this case
+// $1=argv will have an address that will contain no values
 
 // instructions are 4 bytes
 // no spaces after commas
@@ -58,7 +62,7 @@
 // instruction 0:
 // use $2 as base address, $3 as offset
 // symbol Main is required
-Main       LDB $4,$2,$3 // trailing comment: program starts at Main
+Main       LDB $4,$2,$3 trailing comment: program starts at Main
 
 // address 0x24:
 // instruction 1:
