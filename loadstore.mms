@@ -1,8 +1,10 @@
 // loadstore.mms
 // examples of load and store instructions
 
+// to aid section Loading and storing in 1.3.1', Description of MMIX, from Chapter 1, Basic Concepts, of Fascicle 1, MMIX, by Donald Knuth
+
 // comment line can start with any non-alphanumeric character
-// but don't use semicolon or poundsign to start a comment line
+// but avoid using semicolon, poundsign or whitespace to start a comment line
 // there is no multiline comment block
 // trailing part of line after statement is ignored
 // so comments may be added following a space after a statement
@@ -47,11 +49,11 @@
 // $0 is argc
 // $1 is address of argv, 0x4000 0000 0000 0008, second octa of Pool_Segment
 // $255 first GREG is numeric code for Main (offset of Main)
-// $2, $3 and all other registers are zero at start
+// registers $2 $3 ... $254 are zero at start
 
 // this program can be run in the debugger without a commandline
 // $0=argc will be zero in this case
-// $1=argv will have an address that will contain no values
+// $1=argv will have an address of an empty array of strings
 
 // instructions are 4 bytes
 // no spaces after commas
