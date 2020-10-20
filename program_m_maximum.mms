@@ -82,5 +82,5 @@ Main      GETA  t,8F
 8H        OCTA  X0+1<<3,N<<3
 
 // parameters for Fwrite
-// source buffer X0 + 8*N, size 8*1 bytes
+// source buffer X0 + 8*1, size 8*2 bytes
 9H        OCTA  X0+1<<3,2<<3
