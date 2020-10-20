@@ -1,5 +1,5 @@
 # mmixsamples
-Sample code in MMIX assembly language for the MMIX computer designed by DonalD Knuth for The Art of Computer Programming books
+Sample code in MMIX assembly language for the MMIX computer designed by Donald Knuth for The Art of Computer Programming books
 
 ## Code
 
