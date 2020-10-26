@@ -63,7 +63,7 @@ Main       LDA    ta,TOP
            LDB    tb,tb,0
 
 // c) right
-// octabyte at address of TOP is loaded into register tc
+// octabyte at address of TOP i.e. CONTENTS(TOP) is loaded into register tc
 // this octabyte is the address of the top card
            LDOU   tc,TOP
 
