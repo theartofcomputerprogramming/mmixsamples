@@ -29,24 +29,24 @@ TOP        OCTA   @+6*8
 
 // card pile as shown in figure (2) in section 2.1 of The MMIX Supplement
 // bottom of card pile
-           OCTA   LAMBDA
 // 10 of diamonds, face down
+           OCTA   LAMBDA
            BYTE   #80,1,10," 10 D"
 
-           OCTA   @-2*8
 // 3 of spades, face up
+           OCTA   @-2*8
            BYTE   #00,4,3,"  3 S"
 
 // top of card pile
-           OCTA   @-2*8
 // 2 of diamonds, face up
+           OCTA   @-2*8
            BYTE   #00,2,2,"  2 D"
 
            LOC    #100
 
 // a) wrong
 // LDA loads address of TOP into register ta
-// works because address of TOP is known to assembler
+// works because address of TOP is known to assembler via GREG
 Main       LDA    ta,TOP
 
 // ta+SUIT is offset to TOP which is some location right after TOP
