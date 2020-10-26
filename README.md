@@ -12,3 +12,10 @@ Sample code in MMIX assembly language for the MMIX computer designed by Donald K
 **`bitbyte.mms:`** examples of bitwise and bytewise operations - to aid sections Bitwise operations and Bytewise operations in 1.3.1', Description of MMIX, from Chapter 1, Basic Concepts, of Fascicle 1, MMIX, by Donald Knuth
 
 **`subroutine.mms:`** examples of subroutine calls - to aid section Subroutine calls in 1.3.1', Description of MMIX, from Chapter 1, Basic Concepts, of Fascicle 1, MMIX, by Donald Knuth
+
+**`program_m_maximum.mms:`** annotated Program M in 1.3.1', Description of MMIX, from Chapter 1, Basic Concepts, of Fascicle 1, MMIX, by Donald Knuth
+
+**`exercise_2.1.7.mms:`** exercise 2.1.7 in The MMIX Supplement
+
+**`exercise_2.1.8.mms:`** exercise 2.1.8 in The MMIX Supplement
+

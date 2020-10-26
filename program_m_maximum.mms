@@ -1,6 +1,6 @@
 // program_m_maximum.mms
 
-// usage: mmix program_m_find_the_maximum <data.dat | od -An -td8 -w8 --endian=big
+// usage: mmix program_m_find_the_maximum <data.dat
 // reads N bigendian numbers on stdin
 // writes 1-based index and value of max on stdout
 // Examples:
@@ -52,35 +52,36 @@ DecrK      SUB    kk,kk,8     15: M5 [Decrease k] k <- k - 1
            POP    2,0         17: Return to main program
 
 
-Main      GETA  t,8F
+Main      GETA    t,8F
 // fill array using Fread parameters at 8H
-          TRAP  0,Fread,StdIn
+          TRAP    0,Fread,StdIn
 
 // $0 is bytes offset of end of array
-          SET   $0,N<<3
-// $2 is array index
-          SR    $1,$0,3
+          SET     $0,N<<3
+// $1 is array index
+          SR      $1,$0,3
 // call Maximum
 // $0 is hole
 // $1 renamed $0 for Maximum
-          PUSHJ 0,Maximum
+          PUSHJ   0,Maximum
 
 // hole $0 has first return value - the maximum - from Maximum
 // index of max returned in $1
-          STO   $1,x0,1<<3
-          STO   $0,x0,2<<3
+          STO     $1,x0,1<<3
+          STO     $0,x0,2<<3
 
 // Fwrite parameters at 9H: source buffer address followed by size bytes
-          GETA  t,9F
-          TRAP  0,Fwrite,StdOut
+          GETA    t,9F
+          TRAP    0,Fwrite,StdOut
 
 // exit
-          TRAP  0,Halt,0
+          TRAP    0,Halt,0
 
 // parameters for Fread
 // destination buffer X0 + 8*1, size 8*N bytes
-8H        OCTA  X0+1<<3,N<<3
+8H        OCTA    X0+1<<3,N<<3
 
 // parameters for Fwrite
 // source buffer X0 + 8*1, size 8*2 bytes
-9H        OCTA  X0+1<<3,2<<3
+9H        OCTA    X0+1<<3,2<<3
+
