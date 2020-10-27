@@ -19,3 +19,5 @@ Sample code in MMIX assembly language for the MMIX computer designed by Donald K
 
 **`exercise_2.1.8.mms:`** exercise 2.1.8 in The MMIX Supplement
 
+**`exercise_2.1.9.mms:`** exercise 2.1.9 in The MMIX Supplement
+
