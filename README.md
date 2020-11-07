@@ -13,7 +13,7 @@ Sample code in MMIX assembly language for the MMIX computer designed by Donald K
 
 **`subroutine.mms:`** examples of subroutine calls - to aid section Subroutine calls in 1.3.1', Description of MMIX, from Chapter 1, Basic Concepts, of Fascicle 1, MMIX, by Donald Knuth
 
-**`program_m_maximum.mms:`** annotated Program M in 1.3.1', Description of MMIX, from Chapter 1, Basic Concepts, of Fascicle 1, MMIX, by Donald Knuth
+**`program_m_maximum.mms:`** annotated Program M in 1.3.1' Description of MMIX, from Chapter 1, Basic Concepts, of Fascicle 1, MMIX, by Donald Knuth
 
 **`exercise_2.1.7.mms:`** exercise 2.1.7 in The MMIX Supplement
 
@@ -21,3 +21,4 @@ Sample code in MMIX assembly language for the MMIX computer designed by Donald K
 
 **`exercise_2.1.9.mms:`** exercise 2.1.9 in The MMIX Supplement
 
+**`program_t_topological_sort.mms:`** annotated Program T (Topological sort) in 2.2.3 Linked Allocation, The MMIX Supplement, to accompany Chapter 2, Information Structures of TAOCP Volume 1, Fundamental Algorithms, by Donald Knuth
