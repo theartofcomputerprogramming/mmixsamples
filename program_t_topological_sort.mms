@@ -16,26 +16,33 @@
               LOC     :Data_Segment
 
 // base address register for i/o buffer
+// address: 0x2000 0000 0000 0000
               GREG    @
 
+// file descriptors
 Fin           IS      3
 Fout          IS      4
-InName        BYTE    'a'  /* we fake input and output */
+
+InName        BYTE    0  /* we fake input and output */
               BYTE    0
-OutName       BYTE   'b' 
+OutName       BYTE    0
               BYTE    0
 
 // open input filename stored in InName, in binary read mode
+// address: 0x2000 0000 0000 0008
 InOpen        OCTA    InName,:BinaryRead
+
 // open output filename stored in OutName, in binary write mode
+// address: 0x2000 0000 0000 0018
 OutOpen       OCTA    OutName,:BinaryWrite
 
 // buffer capacity in bytes
-// each node is 2 tetras
-// capacity is 256 nodes
+// each pair is 2 tetras
+// capacity is 256 pairs = 2^11 bytes = 0x800 bytes
 SIZE          IS      256*2*4
 
 // input buffer reused for output too
+// address: 0x2000 0000 0000 0028
 Buffer        TETRA   0,9,9,2,3,7,7,5,5,8,8,6,4,6,1,3,7,4,9,5,2,8,0,0
 
 //Buffer        TETRA   0,3,1,2,1,3,0,0
@@ -48,15 +55,23 @@ Buffer        TETRA   0,9,9,2,3,7,7,5,5,8,8,6,4,6,1,3,7,4,9,5,2,8,0,0
               LOC     Buffer+SIZE
 
 // base address register 
+// address: 0x2000 0000 0000 0828
               GREG    @
 
+// address: 0x2000 0000 0000 0828
 Sentinel      OCTA    0        Terminates input buffer
 
 // io parameters to fill input Buffer with SIZE bytes
+// address: 0x2000 0000 0000 0830
 IOArgs        OCTA    Buffer,SIZE
 
 // start of avail memory allocation pool
+// address: 0x2000 0000 0000 0840
 Base          OCTA    0        Last OCTA in data segment.
+
+// n octas for objects array
+// 3 octas mean add 0x18 -> address 0x2000 0000 0000 0858 
+// 9 octas mean add 0x48 -> address 0x2000 0000 0000 0888 
 
 // code segment
               LOC     #100
