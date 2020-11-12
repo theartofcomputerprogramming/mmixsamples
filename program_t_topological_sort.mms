@@ -1,6 +1,6 @@
 // program_t_topological_sort.mms
 
-// Program T (Topological sort), 2.2.2 Sequential Allocation,
+// Program T (Topological sort), 2.2.3 Linked Allocation,
 // The MMIX Supplement, Martin Ruckert
 
 
@@ -124,7 +124,7 @@ left          IS      $7
 // address of right tetra of pair
 right         IS      $8
 
-// address of new node obtained from avail pool
+// offset of new node obtained from avail pool
 p             IS      $9
 
 // rear of queue is link index into array of objects
@@ -174,10 +174,10 @@ t             IS      $15
 // avail = 8*n + 8 = 8 * (n+1)
               8ADDU   :avail,n,:avail   12: Allocate n COUNT and TOP fields
 
-// count is address of COUNT field of current node
+// count is base address of COUNT field of object 0
               LDA     count,Base+COUNT  13: count <- LOC(COUNT[0])
 
-// top is address of TOP field of current node
+// top is base address of TOP field of object 0
               LDA     top,Base+TOP    14: top <- LOC(TOP[0])
 
 // initialize COUNT and TOP to 0 for all nodes
@@ -207,18 +207,24 @@ T3            SL      k,k,3           20: T3 Record the relation
               STT     t,k,count       23:
 
 // simplified AVAIL list
+// note avail offset starts at Base taking into account entire objects array
 // p is new node from avail pool
               SET     p,:avail        24: P <= AVAIL
 
 // update avail to sequentially next node in pool
               ADD     :avail,:avail,8   25:
 
+// suc reuses same base address as count since SUC field is at same
+// offset in successor node as COUNT field in object
               STT     k,suc,p         26: SUC(P) <- k
 
 // scale j index to octabytes
               SL      j,j,3           27:
 
               LDTU    t,top,j         28: NEXT(P) <- TOP[j]
+
+// next reuses same base address as top since NEXT field is at same
+// offset in successor node as TOP field in object
               STTU    t,next,p        29:
 
               STTU    p,top,j         30: TOP[j] <- P
@@ -231,9 +237,10 @@ T2            LDT     j,left,i        31: T2 Next relation
               ADD     i,i,8           33: i <- i+1
 
 // branch likely taken because input buffer is traversed sequentially
+// pair left zero means end of input or sentinel past buffer
               PBNZ    j,T3            34: End of input or buffer?
 
-// branch likely untaken
+// branch taken if input does not fill buffer
 1H            BNP     i,T4            35: End of input?
 
 // refill buffer with more input data
@@ -285,42 +292,53 @@ T4            TRAP    0,:Fclose,Fin   39: T4 Scan for zeros
 
               JMP     T5              52:
 
-// branch likely taken
+// branch likely taken because buffer has some capacity
 T5B           PBN     i,0F            53: Jump if buffer is not full
 
               LDA     $255,IOArgs     54:
               TRAP    0,:Fwrite,Fout    55: Flush output buffer
 
+// reinitialize i for negative indexing from end of buffer
               NEG     i,size          56: Point i to the buffer start
+
+// count down number of objects sorted so far
 0H            SUB     n,n,1           57: n <- n-1
 
               LDTU    p,top,f         58: P <- TOP[F]
 
+// end of queue means no more objects in topological order
               BZ      p,T7            59: If P = Lambda go to T7
 
+// decrement predecessors count for a successor
 T6            LDT     s,suc,p         60: T6 Erase relations
 
               LDT     t,s,count       61: Decrease COUNT[SUC(P)]
               SUB     t,t,1           62:
               STT     t,s,count       63:
 
+// branch likely taken because object will often have predecessors
               PBNZ    t,0F            64: If zero,
 
+// add object with no predecessors to output queue
               STT     s,qlink,r       65: set QLINK[R] <- SUC(P),
               SET     r,s             66: and R <- SUC(P)
 0H            LDT     p,next,p        67: P <- NEXT(P)
 
+// branch likely taken because object will often have successors
               PBNZ    p,T6            68: If P = Lambda go to T7
 
-
+// pop front of output queue
 T7            LDT     f,qlink,f       69: T7 Remove from queue
 
 T5            SR      t,f,3           70: T5 Output front of queue
 
+//  write output values back into reused input buffer
               STT     t,left,i        71: Output the value of F
 
+// increment i by 1 tetra
               ADD     i,i,4           72:
 
+// branch likely taken because queue won't be empty
               PBNZ    f,T5B           73: If F = 0 go to T8
 
 T8            LDA     $255,IOArgs     74: T8 End of process
