@@ -22,3 +22,5 @@ Sample code in MMIX assembly language for the MMIX computer designed by Donald K
 **`exercise_2.1.9.mms:`** exercise 2.1.9 in The MMIX Supplement
 
 **`program_t_topological_sort.mms:`** annotated Program T (Topological sort) in 2.2.3 Linked Allocation, The MMIX Supplement, to accompany Chapter 2, Information Structures of TAOCP Volume 1, Fundamental Algorithms, by Donald Knuth
+
+**`program_a_addition_of_polynomials.mms:`** annotated Program A (Addition of polynomials) in 2.2.4 Circular Lists, The MMIX Supplement, to accompany Chapter 2, Information Structures of TAOCP Volume 1, Fundamental Algorithms, by Donald Knuth
