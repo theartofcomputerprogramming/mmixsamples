@@ -24,3 +24,9 @@ Sample code in MMIX assembly language for the MMIX computer designed by Donald K
 **`program_t_topological_sort.mms:`** annotated Program T (Topological sort) in 2.2.3 Linked Allocation, The MMIX Supplement, to accompany Chapter 2, Information Structures of TAOCP Volume 1, Fundamental Algorithms, by Donald Knuth
 
 **`program_a_addition_of_polynomials.mms:`** annotated Program A (Addition of polynomials) in 2.2.4 Circular Lists, The MMIX Supplement, to accompany Chapter 2, Information Structures of TAOCP Volume 1, Fundamental Algorithms, by Donald Knuth
+
+**`program_c_comparison_counting.mms:`** annotated Program C (Comparison counting) in 5.2 Internal sorting, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
+
+**`program_s_straight_insertion_sort.mms:`** annotated Program S (Straight insertion sort) in 5.2.1 Sorting by insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
+
+**`program_d_shellsort.mms:`** annotated Program D (Shellsort) in 5.2.1 Sorting by insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
