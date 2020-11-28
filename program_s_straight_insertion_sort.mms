@@ -34,7 +34,7 @@ c            IS      $9
 
 // initialize outer loop counter j $2 to negative distance
 // j is negative offset from end of array that counts up
-              SUBU    j,key1,keyn      04: j <- 2
+              SUBU    j,key1,keyn      04: j <- 1
 
 // start first iteration of nested loop
               JMP     S1               05:
@@ -76,7 +76,7 @@ S5            STO     k,key1,i         14: S5 R into$R_{i+1}
               ADD     j,j,8            15: j <- j + 1
 
 // likely branch for linear scan
-S1            PBN     j,S2             16: S1 Loop on j, 2 <= j <= N
+S1            PBN     j,S2             16: S1 Loop on j, 1 <= j <= N
 
 // return with no return value
               POP     0,0              17:
