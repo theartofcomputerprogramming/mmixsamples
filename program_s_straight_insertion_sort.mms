@@ -6,21 +6,21 @@
 // Author: M.Ruckert, 26.3.2012
 
 // base address of input array ie first key
-key          IS      $0      Parameter 
+key           IS      $0      Parameter
 
 // size of input array
-n            IS      $1    
+n             IS      $1
 
-j            IS      $2      Local variables
-i            IS      $3
-k            IS      $4
+j             IS      $2      Local variables
+i             IS      $3
+k             IS      $4
 
-ki           IS      $5
-key1         IS      $6
-keyn         IS      $7
+ki            IS      $5
+key1          IS      $6
+keyn          IS      $7
 
-d            IS      $8
-c            IS      $9
+d             IS      $8
+c             IS      $9
 
 // Sort params: key $0 address of first key, n $1 number of keys
 // initialize key1 $6 to address of second key
@@ -29,7 +29,7 @@ c            IS      $9
 // initialize keyn $7 to address of end of array
               8ADDU   keyn,n,key       02:
 
-// d $8 is distance from second key to end of array in octa
+// d $8 is distance from second key to end of array in bytes
               SUBU    d,keyn,key1      03:
 
 // initialize outer loop counter j $2 to negative distance
@@ -50,7 +50,7 @@ S2            LDO     k,keyn,j         06: S2 Set up j, K, R
               ADD     i,d,j            07: i <- j-1
 
 // inner loop on i $3
-// get inner key into ki $8
+// get inner key into ki $5
 S3            LDO     ki,key,i         08: S3 Compare K : K_i
 
 // compare k to ki with result in c $9: 1, 0, or -1
@@ -60,7 +60,7 @@ S3            LDO     ki,key,i         08: S3 Compare K : K_i
               BNN     c,S5             10: To S5 if K >= K_i
 
 // inner key is bigger
-// move inner key one up in memory, remember key1 is 1 address of second key
+// move inner key one up in memory, remember key1 $6 is address of second key
               STO     ki,key1,i        11: S4 Move R_i, decrease i
 
 // decrement inner counter i $3 by octa
@@ -70,7 +70,7 @@ S3            LDO     ki,key,i         08: S3 Compare K : K_i
               PBNN    i,S3             13: To S3 if i >= 0
 
 // found correct position of outer key, write to memory
-S5            STO     k,key1,i         14: S5 R into$R_{i+1}
+S5            STO     k,key1,i         14: S5 R into R_{i+1}
 
 // increment outer counter j $2 by octa
               ADD     j,j,8            15: j <- j + 1
@@ -84,7 +84,7 @@ S1            PBN     j,S2             16: S1 Loop on j, 1 <= j <= N
 // place data in data segment
               LOC     Data_Segment
 
-// base register $254 for addresses of data symbols
+// base address register $254 for addresses of data symbols
               GREG    @
 
 // input array to sort
