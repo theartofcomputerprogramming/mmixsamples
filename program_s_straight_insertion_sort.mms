@@ -41,26 +41,26 @@ c             IS      $9
 
 // nested loop
 
-// outer loop on j $2
-// get outer key into register k $4
+// outer loop on j $2 over unsorted keys
+// get current unsorted key into register k $4
 S2            LDO     k,keyn,j         06: S2 Set up j, K, R
 
-// initialize inner loop counter i $3 to offset before outer key
+// initialize inner loop counter i $3 to offset of node before unsorted key
 // i is offset from array start that counts down
               ADD     i,d,j            07: i <- j-1
 
 // inner loop on i $3
-// get inner key into ki $5
+// get current sorted key into ki $5
 S3            LDO     ki,key,i         08: S3 Compare K : K_i
 
-// compare k to ki with result in c $9: 1, 0, or -1
+// compare unsorted key k to sorted key ki with result in c $9: 1, 0, or -1
               CMP     c,k,ki           09:
 
 // less likely branch with higher disorder
               BNN     c,S5             10: To S5 if K >= K_i
 
-// inner key is bigger
-// move inner key one up in memory, remember key1 $6 is address of second key
+// sorted key is bigger, keep going
+// move sorted key one up in memory, remember key1 $6 is address of second key
               STO     ki,key1,i        11: S4 Move R_i, decrease i
 
 // decrement inner counter i $3 by octa
@@ -69,10 +69,11 @@ S3            LDO     ki,key,i         08: S3 Compare K : K_i
 // likely branch with higher disorder
               PBNN    i,S3             13: To S3 if i >= 0
 
-// found correct position of outer key, write to memory
+// unsorted key is bigger or at start of array
+// found correct position of unsorted key, write to memory
 S5            STO     k,key1,i         14: S5 R into R_{i+1}
 
-// increment outer counter j $2 by octa
+// increment outer counter j $2 by octa to offset of next unsorted key
               ADD     j,j,8            15: j <- j + 1
 
 // likely branch for linear scan
