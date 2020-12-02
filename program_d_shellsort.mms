@@ -54,15 +54,15 @@ D2            LDO     h,inc,s         04: D2 Loop on j, h <- h_s
 // scale increment by octa to use as offset into data array
               SL      h,h,3           05:
 
-// keyh $9 is address of first outer key at increment offset from the start
+// keyh $9 is address of first unsorted key at increment offset from the start
 // keyh is used as base address for moving keys up by the increment
               ADDU    keyh,key,h      06: keyh <- LOC(K_{h+1})
 
-// d $11 is distance from outer key to end of array in bytes
+// d $11 is distance from unsorted key to end of array in bytes
               SUBU    d,keyn,keyh     07: d <- N - h
 
 // initialize outer loop counter j $2 to negative distance
-// j $5 is negative offset of outer key from end of array that counts up
+// j $5 is negative offset of unsorted key from end of array that counts up
               SUBU    j,keyh,keyn     08: j <- h+1
 
 // start first iteration of nested loop
@@ -70,15 +70,17 @@ D2            LDO     h,inc,s         04: D2 Loop on j, h <- h_s
 
 // nested loop
 
+// outer loop over unsorted keys
+
 // initialize inner loop counter i $6
 D3            ADD     i,d,j           10: D3 Set up j, K, R, i <- j-h
 
-// get outer key into k $7
+// get current unsorted key into k $7
               LDO     k,keyn,j        11:
 
-// inner loop on i $6
+// inner loop on i $6 over sorted keys in reverse
 
-// get inner key into ki $8
+// get current sorted key into ki $8
 D4            LDO     ki,key,i        12: D4 Compare K : K_i
 
 // compare k to ki with result in c $13: 1, 0, or -1
@@ -87,17 +89,17 @@ D4            LDO     ki,key,i        12: D4 Compare K : K_i
 // less likely branch with higher disorder
               BNN     c,D6            14: To D6 if K >= K_i
 
-// inner key is bigger
-// move inner key one increment up in memory
+// sorted key is bigger, keep going
+// move sorted key one increment up in memory
               STO     ki,keyh,i       15: D5 Move R_i, decrease i
 
 // decrement inner counter i $6 by one increment
               SUB     i,i,h           16: i <- i-h
 
-// likely branch with higher disorder to get next inner key
+// likely branch with higher disorder to get next sorted key
               PBNN    i,D4            17: To D4 if i >= 0
 
-// found correct position of outer key, write to memory
+// found correct position of unsorted key, write to memory
 D6            STO     k,keyh,i        18: D6 R into R_{i+1}
 
 // increment outer counter j $5 by octa
