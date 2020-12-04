@@ -5,6 +5,11 @@
 // (c) Martin Ruckert 2014
 // Authors: B. Hegerle <bhegerle@ea...>, Martin Ruckert, 2005-11-22 21:41
 
+// idea is to set link field in each node to point to next node in
+// increasing sorted order
+// special head node at start of array is the beginning of the sorted
+// linked list
+
               PREFIX  :Sort:
 // base address register for LINK fields
 link          IS      $0      Parameter
@@ -34,13 +39,14 @@ kp            IS      $7
 t             IS      $9
 
 // offset of LINK field in node
+// LINK contains offset of next sorted node
 LINK          IS      0
 
 // offset of KEY field in node
 KEY           IS      8
 
 // Sort params
-// link $0 address of array
+// link $0 address of data array
 // n $1 number of elements
 
 // set key $2 as base address for KEY field offsets
@@ -62,7 +68,7 @@ KEY           IS      8
 
 // outer loop over array of unsorted nodes in reverse
 
-// initialize p $4 to address of smallest sorted key
+// initialize p $4 to offset of smallest sorted key
 L2            LDOU    p,link,0        06: L2 Set up p, q, K. p <- L_0
 
 // initialize q $5 to point to node pointing to p, so q trails p
@@ -79,7 +85,7 @@ L3            LDO     kp,key,p        09: L3 Compare K:K_p
 // compare unsorted key k $6 to sorted key kp $7: result 1, 0, -1 in $9
               CMP     t,k,kp          10:
 
-// less likely branch if unsorted key is less than sorted key
+// less likely branch if unsorted key is at most sorted key
               BNP     t,L5            11: To L5 if K <= K_p
 
 // unsorted key is bigger, keep going
@@ -97,13 +103,13 @@ L3            LDO     kp,key,p        09: L3 Compare K:K_p
 // "insert" unsorted node before current sorted node
 // this is where trailing pointer q is needed
 
-// update trailing pointer q to point to unsorted key
+// update node of trailing pointer q $5 to point to unsorted node j $3
 L5            STOU    j,link,q        15: L5 Insert into list. L_q <- j
 
-// update unsorted node to point to current sorted node p
+// update unsorted node to point to current sorted node p $4
               STOU    p,link,j        16: L_j <- p
 
-// decrement outer counter by one node to next unsorted node
+// decrement outer counter j $3 by one node to next unsorted node
 0H            SUB     j,j,16          17: j <- j - 1
 
 // continue outer loop over unsorted nodes
