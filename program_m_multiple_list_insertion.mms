@@ -222,7 +222,7 @@ M5            STOU    j,link,q        21: Insert into list. L_q <- j
 // likely branch to continue outer loop over unsorted nodes
 0H            PBP     j,M2            24: N > j >=1
 
-// return, no resturn value
+// return, no return value
               POP     0,0
 
 
