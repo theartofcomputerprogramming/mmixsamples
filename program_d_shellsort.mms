@@ -89,7 +89,7 @@ D4            LDO     ki,key,i        12: D4 Compare K : K_i
 // less likely branch with higher disorder
               BNN     c,D6            14: To D6 if K >= K_i
 
-// sorted key is bigger, keep going
+// unsorted new key is smaller, keep going
 // move sorted key one increment up in memory
               STO     ki,keyh,i       15: D5 Move R_i, decrease i
 
@@ -99,6 +99,7 @@ D4            LDO     ki,key,i        12: D4 Compare K : K_i
 // likely branch with higher disorder to get next sorted key
               PBNN    i,D4            17: To D4 if i >= 0
 
+// unsorted new key is bigger, stop
 // found correct position of unsorted key, write to memory
 D6            STO     k,keyh,i        18: D6 R into R_{i+1}
 
