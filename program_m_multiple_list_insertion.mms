@@ -38,6 +38,9 @@ Size          IS      16
               GREG    @
 
 // array of keys to sort
+// still need extra first record because 0 index is special just as in
+// program_l_list_insertion.mms, even though this first record is no longer
+// used as the head of a linked list
 R0            OCTA    0,0    artificial first record
 
 Data          OCTA    0,503,0,87,0,512,0,61,0,908,0,170,0,897,0,275
