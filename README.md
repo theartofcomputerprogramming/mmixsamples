@@ -27,11 +27,13 @@ Sample code in MMIX assembly language for the MMIX computer designed by Donald K
 
 **`program_c_comparison_counting.mms:`** annotated Program C (Comparison counting) in 5.2 Internal sorting, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
 
-**`program_s_straight_insertion_sort.mms:`** annotated Program S (Straight insertion sort) in 5.2.1 Sorting by insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
+**`program_s_straight_insertion_sort.mms:`** annotated Program S (Straight insertion sort) in 5.2.1 Sorting by Insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
 
-**`program_d_shellsort.mms:`** annotated Program D (Shellsort) in 5.2.1 Sorting by insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
+**`program_d_shellsort.mms:`** annotated Program D (Shellsort) in 5.2.1 Sorting by Insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
 
-**`program_l_list_insertion.mms:`** annotated Program L (List insertion) in 5.2.1 Sorting by insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
+**`program_l_list_insertion.mms:`** annotated Program L (List insertion) in 5.2.1 Sorting by Insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
 
-**`program_m_multiple_list_insertion.mms:`** annotated Program M (Multiple list insertion) in 5.2.1 Sorting by insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
+**`program_m_multiple_list_insertion.mms:`** annotated Program M (Multiple list insertion) in 5.2.1 Sorting by Insertion, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
+
+**`program_b_bubble_sort.mms:`** annotated Program B (Bubble sort) in 5.2.2 Sorting by Exchanging, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
 
