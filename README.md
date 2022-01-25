@@ -41,8 +41,8 @@ Sample code in MMIX assembly language for the MMIX computer designed by Donald K
 
 [**`program_s_straight_selection_sort.mms:`**](program_s_straight_selection_sort.mms) annotated Program S (Straight selection sort) in 5.2.3 Sorting by Selection, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
 
-**`exercise_5.2.2.12.mms:`** annotated solution to exercise 5.2.2.12 implementing Algorithm M (Merge exchange) in 5.2.2 Sorting by Exchanging, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
+[**`exercise_5.2.2.12.mms:`**](exercise_5.2.2.12.mms) annotated solution to exercise 5.2.2.12 implementing Algorithm M (Merge exchange) in 5.2.2 Sorting by Exchanging, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
 
-**`program_s_straight_selection_sort.mms:`** annotated Program S (Straight selection sort) in 5.2.3 Sorting by Selection, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
+[**`program_s_straight_selection_sort.mms:`**](program_s_straight_selection_sort.mms) annotated Program S (Straight selection sort) in 5.2.3 Sorting by Selection, The MMIX Supplement, to accompany Chapter 5, Sorting of TAOCP Volume 3, Sorting and Searching, by Donald Knuth
 
 [**`inout.mms:`**](inout.mms) annotated program for decoding problem in 1.4.2' Croutines, from Chapter 1, Basic Concepts, of Fascicle 1, MMIX, by Donald Knuth
